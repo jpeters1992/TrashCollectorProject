@@ -101,6 +101,7 @@ namespace TrashCollector.Controllers
             {
                 context.Customers.Remove(context.Customers.Find(id));
                 context.SaveChanges();
+
                 return RedirectToAction("Index");
             }
             catch
