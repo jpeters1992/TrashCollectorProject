@@ -154,7 +154,7 @@ namespace TrashCollector.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -168,8 +168,17 @@ namespace TrashCollector.Controllers
 
                     //Assign Role to User Here
                     await this.UserManager.AddToRoleAsync(user.Id, model.UserRoles);
-                    //Ends here
-                    return RedirectToAction("Index", "Users");
+
+                    if (model.UserRoles == "Customer")
+                    {
+                        return RedirectToAction("Create", "Customers");
+                    }
+                    else if (model.UserRoles == "Employee")
+                    {
+                        return RedirectToAction("Create", "Employees");
+                    }
+
+                    return RedirectToAction("Index", "Home");
                 }
                 ViewBag.Name = new SelectList(context.Roles.Where(r => !r.Name.Contains("Admin")).ToList(), "Name", "Name");
                 AddErrors(result);
