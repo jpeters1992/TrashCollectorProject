@@ -18,9 +18,16 @@ namespace TrashCollector.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
+        [Display(Name = "Address")]
         public string StreetAddress { get; set; }
+
+        [Display(Name = "City")]
         public string CityName { get; set; }
+
+        [Display(Name = "State")]
         public string StateName { get; set; }
+
+        [Display(Name = "Zip Code")]
         public int ZipCode { get; set; }
         public double OutstandingBalance { get; set; }
 

@@ -45,7 +45,7 @@ namespace TrashCollector.Controllers
             try
             {
                 //code needed
-                context.Customers.Add(employee);
+                context.Employees.Add(employee);
                 context.SaveChanges();
                 return RedirectToAction("code needed");
             }

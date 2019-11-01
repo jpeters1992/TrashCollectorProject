@@ -12,18 +12,18 @@ namespace TrashCollector
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
-            CreateRolesandUsers();
+            createRoleandUsers();
         }
 
         //In this method, we will create default User roles and Admin user for login   
-        private void CreateRolesandUsers()
+        private void createRoleandUsers()
         {
             ApplicationDbContext context = new ApplicationDbContext();
 
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
-            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+            var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
 
-            // In Startup I am creating first Admin Role and creating a default Admin User    
+            // In Startup I am creating the first Admin Role and creating a default Admin User    
             if (!roleManager.RoleExists("Admin"))
             {
 
@@ -39,12 +39,12 @@ namespace TrashCollector
                 user.Email = "jpeters@gmail.com";
                 string userPWD = "milwaukee";
 
-                var chkUser = userManager.Create(user, userPWD);
+                var chkUser = UserManager.Create(user, userPWD);
 
                 //Add default User to Role Admin   
                 if (chkUser.Succeeded)
                 {
-                    var result1 = userManager.AddToRole(user.Id, "Admin");
+                    var result1 = UserManager.AddToRole(user.Id, "Admin");
                 }
 
             }
