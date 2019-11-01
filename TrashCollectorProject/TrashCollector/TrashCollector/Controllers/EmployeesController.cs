@@ -69,8 +69,6 @@ namespace TrashCollector.Controllers
             try
             {
                 Employee editedEmployee = context.Employees.Find(id);
-                editedEmployee.FirstName = employee.FirstName;
-                editedEmployee.LastName = employee.LastName;
                 editedEmployee.ZipCode = employee.ZipCode;
                 context.SaveChanges();
 

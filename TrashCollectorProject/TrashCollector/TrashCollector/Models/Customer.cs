@@ -17,19 +17,40 @@ namespace TrashCollector.Models
 
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
-
-        [Display(Name = "Address")]
         public string StreetAddress { get; set; }
-
-        [Display(Name = "City")]
         public string CityName { get; set; }
-
-        [Display(Name = "State")]
         public string StateName { get; set; }
 
         [Display(Name = "Zip Code")]
         public int ZipCode { get; set; }
-        public double OutstandingBalance { get; set; }
+
+        [Display(Name = "Weekly Pickup Day")]
+        public int WeeklyPickUpDay { get; set; }
+
+        [Display(Name = "$ Charge")]
+        public double PickupCharge { get; set; }
+
+        [Display(Name = "Balance")]
+        public double? Balance { get; set; }
+        public double? MonthlyCharge { get; set; }
+
+        [Display(Name = "Pick Up Confirmed")]
+        public bool? PickupConfirmed { get; set; }
+
+        [Display(Name = "Service Start Date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime? ServiceStartDate { get; set; }
+
+        [Display(Name = "Service End Date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime? ServiceEndDate { get; set; }
+
+        [Display(Name = "Extra Pickup")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime? ExtraPickUpDate { get; set; }
 
         [ForeignKey("ApplicationUser")]
         public string ApplicationId { get; set; }
