@@ -45,6 +45,8 @@ namespace TrashCollector.Controllers
             try
             {
                 //code needed
+                //test #5 for pull/push commands
+
                 context.Customers.Add(customer);
                 context.SaveChanges();
                 return RedirectToAction("code needed");
